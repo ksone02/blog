@@ -1,0 +1,95 @@
+.container {
+  margin: 24px 0 8px;
+  border-radius: 8px;
+  background: #fff !important;
+  font-size: 13px;
+  position: relative;
+  border: 1px solid #ececec;
+}
+
+.header {
+  padding: 16px 16px;
+  position: absolute;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.copyButton {
+  background: transparent;
+  border: 1px solid #ececec;
+  color: #111;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copyButton:hover {
+  background: #f5f5f5;
+  color: #111;
+}
+
+.codeOuter {
+  width: 100%;
+  border-radius: 8px;
+  padding: 16px 0 0;
+  position: relative;
+}
+
+/* 왼쪽 라인 넘버 */
+.lineNumbers {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-shrink: 0;
+  color: #b9b9b9;
+  background-color: #fff;
+  user-select: none;
+  font-size: 0.6rem;
+  overflow: hidden;
+  min-height: 140px;
+  padding-left: 4px;
+  padding-right: 4px;
+  position: sticky;
+  z-index: 2000;
+  left: 0;
+}
+
+.lineNumbers span {
+  line-height: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  min-width: 20px;
+  padding: 0 3px 0 5px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* 오른쪽 코드 스크롤 영역 */
+.codeScroll {
+  width: 100%;
+  position: relative;
+  display: flex;
+  overflow-x: auto; /* 가로 스크롤 On */
+}
+
+.pre {
+  flex-grow: 2;
+  line-height: 20px;
+  tab-size: 4;
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.pre code {
+  font-family: 'Fira Mono', monospace;
+  display: block;
+  white-space: pre; /* 자동 줄바꿈 X, 원본 그대로 */
+  padding-left: 0;
+  padding: 0 2px 0 6px !important;
+  background: #fff !important;
+}

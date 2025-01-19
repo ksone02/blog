@@ -1,0 +1,20 @@
+{
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "stylelint.validate": ["css", "less", "postcss", "typescript", "typescriptreact"],
+  "stylelint.config": null,
+  "stylelint.enable": true,
+
+  "eslint.options": {
+    "overrideConfigFile": ".eslintrc.js"
+  }
+}
