@@ -2,7 +2,7 @@
   margin: 24px 0 8px;
   border-radius: 8px;
   background: #fff !important;
-  font-size: 13px;
+  font-size: 13px !important;
   position: relative;
   border: 1px solid #ececec;
 }
@@ -92,4 +92,8 @@
   padding-left: 0;
   padding: 0 2px 0 6px !important;
   background: #fff !important;
+}
+
+.pre code span {
+  font-size: 13px !important;
 }
