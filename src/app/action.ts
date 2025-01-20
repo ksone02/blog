@@ -2,6 +2,8 @@
 
 'use server';
 
+import { headers } from 'next/headers';
+
 import privateClient from '@/lib/supabase/private';
 
 export const getViewCount = async (slug: string) => {
@@ -29,8 +31,9 @@ export const getViewCount = async (slug: string) => {
 
 export const incrementViewCount = async (slug: string) => {
   try {
-    const headers = new Headers();
-    const ip = headers.get('x-forwarded-for')?.split(',')[0] ?? '127.0.0.1';
+    const header = await headers();
+
+    const ip = header.get('x-forwarded-for')?.split(',')[0] || '127.0.0.1';
 
     const { error } = await privateClient.rpc('new_visitor', {
       page_pathname: slug,
