@@ -27,6 +27,7 @@ interface PostDetailProps {
 
 const PostDetail = ({ post }: PostDetailProps) => {
   const [views, setViews] = useState(0);
+  const [isViewLoading, setIsViewLoading] = useState(true);
 
   const getFirstImageUrl = (content: string) => {
     const firstFiveLines = content.split('\n').slice(0, 5).join('\n');
@@ -56,16 +57,25 @@ const PostDetail = ({ post }: PostDetailProps) => {
   const [tocItems, setTocItems] = useState<Array<{ id: string; text: string; level: number }>>([]);
 
   useEffect(() => {
-    const fetchViews = async () => {
+    const incrementAndGetViewCount = async () => {
       await incrementViewCount(post.slug).then(async () => {
         const { views } = await getViewCount(post.slug);
         setViews(views);
       });
     };
+    const fetchViews = async () => {
+      setIsViewLoading(true);
+      await incrementAndGetViewCount();
+      setIsViewLoading(false);
+    };
+
+    const handleFocus = () => {
+      incrementAndGetViewCount();
+    };
 
     fetchViews();
 
-    window.addEventListener('focus', fetchViews);
+    window.addEventListener('focus', handleFocus);
     return () => {
       window.removeEventListener('focus', fetchViews);
     };
@@ -121,7 +131,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
                 />
               </svg>
 
-              <span>{views}</span>
+              <span>{isViewLoading ? '-' : views}</span>
             </section>
           </div>
           {post.tags && post.tags.length > 0 && (
