@@ -68,11 +68,7 @@ const PostPage = async ({ params }: PostPageProps) => {
     notFound();
   }
 
-  return (
-    <>
-      <PostDetail post={post} />
-    </>
-  );
+  return <PostDetail post={post} />;
 };
 
 export default PostPage;

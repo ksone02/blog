@@ -74,7 +74,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="ko" className={`${pretendard.className} ${firaMono.className} ${inter.className}`}>
-    <Script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" />
     <Script
       strategy="afterInteractive"
       src="https://www.googletagmanager.com/gtag/js?id=G-RWB7RJ9M52"

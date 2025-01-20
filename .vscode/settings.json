@@ -16,5 +16,6 @@
 
   "eslint.options": {
     "overrideConfigFile": ".eslintrc.js"
-  }
+  },
+  "cSpell.words": ["supabase"]
 }
