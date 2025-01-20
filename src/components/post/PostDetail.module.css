@@ -115,6 +115,7 @@
   line-height: 1.6;
   font-weight: 300;
   color: #333;
+  margin-bottom: 60px;
 }
 
 .content h1,
@@ -195,4 +196,10 @@
   border: 1px solid #e4e4e4;
   padding: 0px 2px;
   border-radius: 4px;
+}
+
+.readCount {
+  font-weight: 400;
+  font-size: 14px;
+  color: #555;
 }

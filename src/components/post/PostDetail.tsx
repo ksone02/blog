@@ -4,6 +4,7 @@
 
 import 'highlight.js/styles/tokyo-night-dark.css';
 
+import Giscus from '@giscus/react';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -84,6 +85,10 @@ const PostDetail = ({ post }: PostDetailProps) => {
             <span className={styles.category}>{post.category}</span>
             <span className={styles.date}>{format(new Date(post.date), 'yyyy년 MM월 dd일')}</span>
           </div>
+          <section className={styles.readCount}>
+            <span id="busuanzi_value_page_pv" />
+            <span>명의 사람들이 읽음</span>
+          </section>
           {post.tags && post.tags.length > 0 && (
             <div className={styles.tags}>
               {post.tags.map(tag => (
@@ -146,6 +151,20 @@ const PostDetail = ({ post }: PostDetailProps) => {
               })}
           </ReactMarkdown>
         </div>
+        <Giscus
+          id="comments"
+          repo="ksone02/blog-reaction"
+          repoId="R_kgDONsTkyw"
+          category="Announcements"
+          categoryId="DIC_kwDONsTky84CmJb6"
+          mapping="pathname"
+          term="Welcome to @giscus/react component!"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="bottom"
+          theme="https://ksone02.github.io/giscus/styles/themes/custom_blog_theme.css"
+          lang="ko"
+        />
       </article>
       <TableOfContents items={tocItems} />
     </div>

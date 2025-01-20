@@ -4,6 +4,7 @@ import './globals.css';
 
 import { Fira_Mono, Inter } from 'next/font/google';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -56,6 +57,24 @@ const pretendard = localFont({
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="ko" className={`${pretendard.className} ${firaMono.className} ${inter.className}`}>
+    <Script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" />
+    <Script
+      strategy="afterInteractive"
+      src="https://www.googletagmanager.com/gtag/js?id=G-RWB7RJ9M52"
+    />
+    <Script
+      id="gtag-init"
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RWB7RJ9M52');
+          `,
+      }}
+    />
+
     <body>
       <header className="header">
         <nav className="nav">
