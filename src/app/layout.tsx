@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 import './globals.css';
 
+import { Metadata } from 'next';
 import { Fira_Mono, Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import Script from 'next/script';
@@ -54,6 +55,22 @@ const pretendard = localFont({
   preload: true,
   display: 'swap',
 });
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'ksone.blog',
+    description: '강상원의 블로그',
+    keywords: ['ksone', 'blog', 'frontend', 'developer', 'javascript', 'typescript', 'react'],
+    openGraph: {
+      title: 'ksone.blog',
+      description: '강상원의 블로그',
+      images: ['/og-image.png'],
+    },
+    icons: {
+      icon: '/ms-icon-310x310.png',
+    },
+  };
+}
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="ko" className={`${pretendard.className} ${firaMono.className} ${inter.className}`}>
