@@ -64,7 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: 'ksone.blog',
       description: '강상원의 블로그',
-      images: ['/og-image.png'],
+      images: ['/og_image.png'],
     },
     icons: {
       icon: '/ms-icon-310x310.png',
