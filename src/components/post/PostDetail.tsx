@@ -109,7 +109,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
             </div>
           )}
           <h1 className={styles.title}>{post.title}</h1>
-          <span className={styles.author}>from. {process.env.AUTHOR}</span>
+          <span className={styles.author}>from. {process.env.NEXT_PUBLIC_AUTHOR}</span>
           <div className={styles.meta}>
             <span className={styles.category}>{post.category}</span>
             <span className={styles.date}>{format(new Date(post.date), 'yyyy년 MM월 dd일')}</span>
@@ -198,10 +198,10 @@ const PostDetail = ({ post }: PostDetailProps) => {
         </div>
         <Giscus
           id="comments"
-          repo={`${process.env.GISCUS_OWNER}/${process.env.GISCUS_REPO}`}
-          repoId={`${process.env.GISCUS_REPO_ID}`}
-          category={`${process.env.GISCUS_CATEGORY}`}
-          categoryId={`${process.env.GISCUS_CATEGORY_ID}`}
+          repo={`${process.env.NEXT_PUBLIC_GISCUS_OWNER}/${process.env.NEXT_PUBLIC_GISCUS_REPO}`}
+          repoId={`${process.env.NEXT_PUBLIC_GISCUS_REPO_ID}`}
+          category={`${process.env.NEXT_PUBLIC_GISCUS_CATEGORY}`}
+          categoryId={`${process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID}`}
           mapping="pathname"
           term="Welcome to @giscus/react component!"
           reactionsEnabled="1"

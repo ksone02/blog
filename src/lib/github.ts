@@ -96,7 +96,7 @@ async function recursivelyFetchPosts(path: string): Promise<Post[]> {
 
       const fileDate = formatInTimeZone(
         new Date(utcDate),
-        process.env.TIMEZONE || 'Asia/Seoul',
+        process.env.NEXT_PUBLIC_TIMEZONE || 'Asia/Seoul',
         'yyyy-MM-dd',
       );
 
