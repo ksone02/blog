@@ -5,12 +5,20 @@ import matter from 'gray-matter';
 
 import type { Post } from '@/types/github';
 
+const GH_TOKEN = process.env.GITHUB_TOKEN;
+const GH_OWNER = process.env.GITHUB_OWNER;
+const GH_REPO = process.env.GITHUB_REPO;
+
+if (!GH_TOKEN || !GH_TOKEN.trim() || !GH_OWNER || !GH_OWNER.trim() || !GH_REPO || !GH_REPO.trim()) {
+  throw new Error('Required GitHub Environments. (TOKEN | OWNER_NAME | REPO_NAME)');
+}
+
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
-const OWNER = process.env.GITHUB_OWNER || 'ksone02';
-const REPO = process.env.GITHUB_REPO || 'obsidian-note';
+const OWNER = process.env.GITHUB_OWNER || '';
+const REPO = process.env.GITHUB_REPO || '';
 
 export async function getAllPosts(): Promise<Post[]> {
   try {
@@ -86,7 +94,11 @@ async function recursivelyFetchPosts(path: string): Promise<Post[]> {
       const utcDate =
         commits.data[0]?.commit.author?.date || frontMatter.date || new Date().toISOString();
 
-      const fileDate = formatInTimeZone(new Date(utcDate), 'Asia/Seoul', 'yyyy-MM-dd');
+      const fileDate = formatInTimeZone(
+        new Date(utcDate),
+        process.env.TIMEZONE || 'Asia/Seoul',
+        'yyyy-MM-dd',
+      );
 
       return [
         {
@@ -108,6 +120,7 @@ async function recursivelyFetchPosts(path: string): Promise<Post[]> {
   const postsArrays = await Promise.all(data.map(processItem));
   return postsArrays.flat();
 }
+
 async function getFileContent(path: string, isImage: boolean = false): Promise<string> {
   const { data } = await octokit.repos.getContent({
     owner: OWNER,
